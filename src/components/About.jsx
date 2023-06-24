@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { motion } from 'framer-motion';
 import { Tooltip } from 'react-tooltip';
 
@@ -7,6 +7,10 @@ import { fadeIn, textVariant } from '../utils/motion';
 import { SectionWrapper } from '../hoc';
 
 import { TbBrandGithub, TbBrandLinkedin } from 'react-icons/tb';
+
+// import Tech from './Tech';
+const Tech = lazy(() => import('./Tech'));
+import { RichText } from './Rich-text/index';
 
 const MOCK_CONTACTS = [
   {
@@ -21,31 +25,19 @@ const MOCK_CONTACTS = [
   },
 ];
 
-import Tech from './Tech';
-
-const About = () => {
+const About = ({ aboutInfo }) => {
   return (
     <>
       <motion.div variants={textVariant()}>
         <p className={styles.sectionSubText}>Introduction</p>
         <h2 className={styles.sectionHeadText}>Overview.</h2>
       </motion.div>
-      <motion.p
+
+      <motion.div
         variants={fadeIn('', '', 0.1, 1)}
         className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]">
-        Welcome to my portfolio! My name is{' '}
-        <span className="text-white font-semibold">
-          Miguel Caixeta
-        </span>{' '}
-        and I'm a beginner Front-End Developer, thrilled to share my
-        skills and projects with you. With a solid understanding of
-        HTML, CSS, JavaScript, and experience working with frameworks
-        like React and TailwindCSS, I strive to create stunning and
-        responsive websites. I am passionate about crafting visually
-        appealing interfaces that deliver exceptional user
-        experiences. Feel free to explore my portfolio and discover
-        the projects I've worked on.
-      </motion.p>
+        <RichText content={aboutInfo?.about?.presentation.raw} />
+      </motion.div>
 
       <motion.div
         variants={fadeIn('', '', 0.3, 1)}
@@ -57,14 +49,14 @@ const About = () => {
             href={contact.url}
             key={index}
             target="_blank"
+            aria-label={`Find Miguel Caixeta at ${contact.name}`}
             className="hover:text-white transition-colors">
             <span className="text-4xl">{contact.icon}</span>
           </a>
         ))}
         <Tooltip id="about-tooltip" />
       </motion.div>
-
-      <Tech />
+      <Tech techInfo={aboutInfo?.about?.technologies} />
     </>
   );
 };

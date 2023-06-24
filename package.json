@@ -10,11 +10,14 @@
     "preview": "vite preview --host"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.16",
     "@emailjs/browser": "^3.11.0",
-    "@react-three/drei": "^9.74.8",
+    "@graphcms/rich-text-react-renderer": "^0.6.1",
+    "@react-three/drei": "^9.77.1",
     "@react-three/fiber": "^8.13.1",
     "eslint-plugin-prettier": "^4.2.1",
     "framer-motion": "^10.12.16",
+    "graphql": "^14.0.2",
     "maath": "^0.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

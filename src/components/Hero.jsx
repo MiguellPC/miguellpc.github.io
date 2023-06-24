@@ -2,8 +2,9 @@ import { motion } from 'framer-motion';
 
 import { styles } from '../styles';
 import { ComputersCanvas } from './canvas';
+import { RichText } from './Rich-text/index';
 
-const Hero = () => {
+const Hero = ({ heroInfo }) => {
   return (
     <section className="relative w-full h-screen mx-auto">
       <div className="flex flex-col gap-10">
@@ -18,10 +19,10 @@ const Hero = () => {
             <h1 className={`${styles.heroHeadText} text-white`}>
               Hi, I'm <span className="text-emerald-400">Miguel</span>
             </h1>
-            <p
+            <div
               className={`${styles.heroSubText} mt-2 text-white-100`}>
-              I'm a Junior Front-End Developer
-            </p>
+              <RichText content={heroInfo?.hero?.introduction.raw} />
+            </div>
           </div>
         </div>
 

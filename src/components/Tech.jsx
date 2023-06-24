@@ -1,5 +1,4 @@
 import Tilt from 'react-parallax-tilt';
-import { technologies } from '../constants';
 import { motion } from 'framer-motion';
 import { fadeIn } from '../utils/motion';
 
@@ -31,16 +30,12 @@ const TechCard = ({ icon, name, index }) => {
   );
 };
 
-const Tech = () => {
+const Tech = ({ techInfo }) => {
   return (
     <div className="flex flex-wrap justify-center gap-7 mt-20">
-      {technologies.map((technology, index) => (
-        <div key={technology.name} id={technology.id}>
-          <TechCard
-            icon={technology.icon}
-            name={technology.name}
-            index={index}
-          />
+      {techInfo?.map(({ icon, name }, index) => (
+        <div key={name}>
+          <TechCard icon={icon.url} name={name} index={index} />
         </div>
       ))}
     </div>

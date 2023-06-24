@@ -4,7 +4,6 @@ import { Tooltip } from 'react-tooltip';
 
 import { styles } from '../styles';
 import { SectionWrapper } from '../hoc';
-import { projects } from '../constants';
 import { fadeIn, textVariant } from '../utils/motion';
 
 import { HiOutlineExternalLink } from 'react-icons/hi';
@@ -14,22 +13,22 @@ const ProjectCard = ({
   index,
   name,
   description,
-  tags,
+  tag,
   image,
-  source_code_link,
-  live_version_link,
+  sourceCodeLink,
+  liveVersionLink,
 }) => {
   const MOCK_LINKS = [
     {
       name: 'Live Version',
       icon: <HiOutlineExternalLink />,
-      link: live_version_link,
+      link: liveVersionLink,
       message: 'Click to see the live version of this project',
     },
     {
       name: 'Github',
       icon: <FaGithub />,
-      link: source_code_link,
+      link: sourceCodeLink,
       message: 'Repository on GitHub',
     },
   ];
@@ -41,40 +40,44 @@ const ProjectCard = ({
         tiltMaxAngleY={10}
         transitionSpeed={450}
         className="bg-gray-500 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-700 p-5 rounded-2xl sm:w-[360px] w-full min-h-[480px]">
-        <div className="relative w-full h-[230px]">
-          <img
-            src={image}
-            alt={name}
-            className="w-full h-full object-cover rounded-2xl"
-          />
+        <div className="flex flex-col items-start justify-center">
+          <div className="relative w-full h-[230px]">
+            <img
+              src={image.url}
+              alt={`Thumbnail for ${name}`}
+              className="w-full h-full object-cover rounded-2xl"
+            />
 
-          <div className="absolute inset-0 flex justify-end m-3 card-img_hover gap-1">
-            {MOCK_LINKS.map(({ icon, link, message }, index) => (
-              <div
-                data-tooltip-id={`projectCard-tooltip`}
-                data-tooltip-content={message}
-                key={index}
-                onClick={() => window.open(link, '_blank')}
-                className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:text-secondary transition-all">
-                <div className="text-2xl">{icon}</div>
-              </div>
+            <div className="absolute inset-0 flex justify-end m-3 card-img_hover gap-1">
+              {MOCK_LINKS.map(({ icon, link, message }, index) => (
+                <div
+                  data-tooltip-id={`projectCard-tooltip`}
+                  data-tooltip-content={message}
+                  key={index}
+                  onClick={() => window.open(link, '_blank')}
+                  className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:text-secondary transition-all">
+                  <div className="text-2xl">{icon}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-5">
+            <h3 className="text-white font-bold text-[24px]">
+              {name}
+            </h3>
+            <p className="mt-2 text-secondary text-[14px]">
+              {description}
+            </p>
+          </div>
+
+          <div className="mt-4 flex flex-wrap gap-2 w-full">
+            {tag.map(({ tagName, tagColor }) => (
+              <p key={tagName} className={`text-[14px] ${tagColor}`}>
+                #{tagName}
+              </p>
             ))}
           </div>
-        </div>
-
-        <div className="mt-5">
-          <h3 className="text-white font-bold text-[24px]">{name}</h3>
-          <p className="mt-2 text-secondary text-[14px]">
-            {description}
-          </p>
-        </div>
-
-        <div className="mt-4 flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <p key={tag.name} className={`text-[14px] ${tag.color}`}>
-              #{tag.name}
-            </p>
-          ))}
         </div>
       </Tilt>
       <Tooltip id="projectCard-tooltip" />
@@ -82,7 +85,7 @@ const ProjectCard = ({
   );
 };
 
-const Works = () => {
+const Works = ({ projectsInfo }) => {
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -101,7 +104,7 @@ const Works = () => {
       </div>
 
       <div className="mt-20 flex flex-wrap gap-7">
-        {projects.map((project, index) => (
+        {projectsInfo?.about?.projects.map((project, index) => (
           <ProjectCard
             key={`project-${index}`}
             index={index}
