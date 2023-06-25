@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import React, { lazy, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Tooltip } from 'react-tooltip';
 
@@ -8,9 +8,8 @@ import { SectionWrapper } from '../hoc';
 
 import { TbBrandGithub, TbBrandLinkedin } from 'react-icons/tb';
 
-// import Tech from './Tech';
 const Tech = lazy(() => import('./Tech'));
-import { RichText } from './Rich-text/index';
+import { RichText } from './Rich-text';
 
 const MOCK_CONTACTS = [
   {
@@ -26,6 +25,14 @@ const MOCK_CONTACTS = [
 ];
 
 const About = ({ aboutInfo }) => {
+  const [presentation, setPresentation] = useState([]);
+
+  useEffect(() => {
+    if (aboutInfo?.presentation?.raw?.children) {
+      setPresentation(aboutInfo?.presentation?.raw?.children);
+    }
+  }, [aboutInfo]);
+
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -36,7 +43,7 @@ const About = ({ aboutInfo }) => {
       <motion.div
         variants={fadeIn('', '', 0.1, 1)}
         className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]">
-        <RichText content={aboutInfo?.about?.presentation.raw} />
+        <RichText content={presentation} />
       </motion.div>
 
       <motion.div
@@ -56,7 +63,7 @@ const About = ({ aboutInfo }) => {
         ))}
         <Tooltip id="about-tooltip" />
       </motion.div>
-      <Tech techInfo={aboutInfo?.about?.technologies} />
+      <Tech techInfo={aboutInfo?.technologies} />
     </>
   );
 };

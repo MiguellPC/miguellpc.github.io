@@ -3,9 +3,7 @@ import { gql } from '@apollo/client';
 export const fetchHygraphQuery = gql`
   query PageInfoQuery {
     hero(where: { slug: "home" }) {
-      introduction {
-        raw
-      }
+      introduction
     }
     about(where: { slug: "about" }) {
       presentation {

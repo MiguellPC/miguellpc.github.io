@@ -21,7 +21,7 @@ const Hero = ({ heroInfo }) => {
             </h1>
             <div
               className={`${styles.heroSubText} mt-2 text-white-100`}>
-              <RichText content={heroInfo?.hero?.introduction.raw} />
+              {heroInfo?.introduction}
             </div>
           </div>
         </div>

@@ -73,9 +73,11 @@ const ProjectCard = ({
 
           <div className="mt-4 flex flex-wrap gap-2 w-full">
             {tag.map(({ tagName, tagColor }) => (
-              <p key={tagName} className={`text-[14px] ${tagColor}`}>
+              <div
+                key={tagName}
+                className={`text-[14px] ${tagColor}`}>
                 #{tagName}
-              </p>
+              </div>
             ))}
           </div>
         </div>
@@ -104,12 +106,10 @@ const Works = ({ projectsInfo }) => {
       </div>
 
       <div className="mt-20 flex flex-wrap gap-7">
-        {projectsInfo?.about?.projects.map((project, index) => (
-          <ProjectCard
-            key={`project-${index}`}
-            index={index}
-            {...project}
-          />
+        {projectsInfo?.map((project, index) => (
+          <div key={`project-${index}`}>
+            <ProjectCard index={index} {...project} />
+          </div>
         ))}
       </div>
     </>

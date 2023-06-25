@@ -14,19 +14,18 @@ import {
 } from './components';
 
 const App = () => {
-  const [data, setData] = useState({});
-  const {
-    loading,
-    error,
-    data: apolloData,
-  } = useQuery(fetchHygraphQuery);
+  const [heroInfo, setHeroInfo] = useState({});
+  const [aboutInfo, setAboutInfo] = useState({});
+  const [projectsInfo, setProjectsInfo] = useState({});
+  const { loading, error, data } = useQuery(fetchHygraphQuery);
 
   if (error) console.log(`Error: ${error.message}`);
 
   useEffect(() => {
-    console.log(apolloData);
-    setData(apolloData);
-  }, [apolloData]);
+    setHeroInfo(data?.hero);
+    setAboutInfo(data?.about);
+    setProjectsInfo(data?.about.projects);
+  }, [data]);
 
   if (loading) return <p>Loading...</p>;
 
@@ -35,10 +34,10 @@ const App = () => {
       <div className="relative z-0 bg-primary">
         <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
           <Navbar />
-          <Hero heroInfo={data} />
+          <Hero heroInfo={heroInfo} />
         </div>
-        <About aboutInfo={data} />
-        <Works projectsInfo={data} />
+        <About aboutInfo={aboutInfo} />
+        <Works projectsInfo={projectsInfo} />
         <div className="relative z-0">
           <Contact />
           <StarsCanvas />
