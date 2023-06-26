@@ -1,16 +1,14 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-const REACT_APP_HYG_API =
-  'https://api-sa-east-1.hygraph.com/v2/clj50ule90hm901uf8jmz60ma/master';
-
-const REACT_APP_HYG_AUTH =
-  'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImdjbXMtbWFpbi1wcm9kdWN0aW9uIn0.eyJ2ZXJzaW9uIjozLCJpYXQiOjE2ODczMTQwNTgsImF1ZCI6WyJodHRwczovL2FwaS1zYS1lYXN0LTEuaHlncmFwaC5jb20vdjIvY2xqNTB1bGU5MGhtOTAxdWY4am16NjBtYS9tYXN0ZXIiLCJtYW5hZ2VtZW50LW5leHQuZ3JhcGhjbXMuY29tIl0sImlzcyI6Imh0dHBzOi8vbWFuYWdlbWVudC5ncmFwaGNtcy5jb20vIiwic3ViIjoiMDFmNWYxZDUtZDE5ZC00MGE4LTg1NmItNzc3YzZlMzdlNjM3IiwianRpIjoiY2xqNTM4M2wxMGljbjAxdGU4bXN1NjM4MCJ9.eDomekXU79JXhWh_8NhpY9GwBJZW-Es9EWxeiNfdAhnFo4T4UEF97jxaw1FYqURtdTyH2Cb7Hpmv5Lnsb7t_vzuS3A-YuKHUQbOK0Z7TWjOTbf73dvS_KxWWoolIpX1YL5BCwV1ZVh_ITkwUuLw7_X4Iheo3oxpyCPsNgdDxVooGa-MxyHEwlZKJgYMXMCBoJsM8I6i9GM4q2kHeXDBvYFTbij3wU0FU1mXdQMDAWkWP71Uka3KGMXpWrlTR7cwBOI2SEcPQrDQCR0FfjvgKcWn6USPHsem7Jv6PIBxQM8alqu2CSdmL3WZAuyUOK6d2utob0kaHi6GmkVZLrFPCmZ1vIkVg5Oy5M6CbdydKF4ICw2pH_qqq4zq1-JJP1Fr1YXlWpPvpYJr6xMBdbXaW28ad5Aq4xGs-9xRnWagEwZX2U1_NYh5xAvRnrJINoVBuScj4XcPUjyIIeE8L0YZ6ICNjEBpLuuNrJoNn9aPoiSUANhGxSiQXwPLMDs82IbEYq4XNc1a_hgSLcz0GIeiVMiUCP46H6RVzQaW7Dd6rzjK6NxYGltoPxdbcCmV2l_sG81NTbeiCWEzwa9jUVb0rdgWF3wGljbt_v4MhakSHRG5-My7zM109l1n0OkpssPS4N-RMVdEC_bxHbs_um4XM3XYnnBr5iunupNO_4o94t84';
-
 const client = new ApolloClient({
-  uri: REACT_APP_HYG_API,
+  uri: import.meta.env.VITE_REACT_APP_HYG_API,
   cache: new InMemoryCache(),
   headers: {
-    Authorization: `Bearer ${REACT_APP_HYG_AUTH}`,
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+    Authorization: `Bearer ${
+      import.meta.env.VITE_REACT_APP_HYG_AUTH
+    }`,
   },
 });
 
