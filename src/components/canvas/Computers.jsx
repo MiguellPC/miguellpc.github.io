@@ -7,7 +7,7 @@ import {
   AdaptiveDpr,
 } from '@react-three/drei';
 
-import CanvasLoader from '../Loader';
+import CanvasLoader from './CanvasLoader';
 
 const Computers = ({ isMobile }) => {
   const computer = useGLTF('./desktop_pc/scene.gltf');

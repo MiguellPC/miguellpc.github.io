@@ -5,6 +5,7 @@ import About from './About';
 import Tech from './Tech';
 import Works from './Works';
 import Contact from './Contact';
+import Loader from './Loader';
 
 export {
   Hero,
@@ -13,6 +14,7 @@ export {
   Tech,
   Works,
   Contact,
+  Loader,
   EarthCanvas,
   ComputersCanvas,
   StarsCanvas,

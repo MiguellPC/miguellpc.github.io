@@ -8,6 +8,7 @@ import { fadeIn, textVariant } from '../utils/motion';
 
 import { HiOutlineExternalLink } from 'react-icons/hi';
 import { FaGithub } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
 
 const ProjectCard = ({
   index,
@@ -88,6 +89,12 @@ const ProjectCard = ({
 };
 
 const Works = ({ projectsInfo }) => {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    setProjects(projectsInfo);
+  }, [projectsInfo]);
+
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -106,7 +113,7 @@ const Works = ({ projectsInfo }) => {
       </div>
 
       <div className="mt-20 flex flex-wrap gap-7">
-        {projectsInfo?.map((project, index) => (
+        {projects?.map((project, index) => (
           <div key={`project-${index}`}>
             <ProjectCard index={index} {...project} />
           </div>
