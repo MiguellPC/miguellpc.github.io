@@ -2,8 +2,11 @@ import { motion } from 'framer-motion';
 
 import { styles } from '../styles';
 import { ComputersCanvas } from './canvas';
+import { useTranslation } from 'react-i18next';
 
 const Hero = ({ heroInfo }) => {
+  const { t } = useTranslation();
+
   return (
     <section className="relative w-full h-screen mx-auto">
       <div className="flex flex-col gap-10">
@@ -16,7 +19,8 @@ const Hero = ({ heroInfo }) => {
 
           <div>
             <h1 className={`${styles.heroHeadText} text-white`}>
-              Hi, I'm <span className="text-emerald-400">Miguel</span>
+              {t('Hero.greeting')}{' '}
+              <span className="text-emerald-400">Miguel</span>
             </h1>
             <div
               className={`${styles.heroSubText} mt-2 text-white-100`}>
@@ -25,7 +29,9 @@ const Hero = ({ heroInfo }) => {
           </div>
         </div>
 
-        <div className="absolute xl:h-[750px] md:h-[550px] h-[450px] w-full xl:translate-y-24 md:translate-y-1/3 translate-y-2/4">
+        <div
+          className="absolute xl:h-[750px] md:h-[550px] h-[450px] w-full xl:translate-y-24 md:translate-y-1/3 tall:translate-y-2/4
+        translate-y-2/4">
           <ComputersCanvas />
         </div>
 

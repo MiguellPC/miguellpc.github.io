@@ -1,21 +1,21 @@
 import { gql } from '@apollo/client';
 
 export const fetchHygraphQuery = gql`
-  query PageInfoQuery {
-    hero(where: { slug: "home" }) {
+  query PageInfoQuery($locale: [Locale!]!) {
+    hero(where: { slug: "home" }, locales: $locale) {
       introduction
     }
-    about(where: { slug: "about" }) {
+    about(where: { slug: "about" }, locales: $locale) {
       presentation {
         raw
       }
       technologies {
-        icon {
+        icon(locales: en) {
           url
         }
         name
       }
-      projects {
+      projects(forceParentLocale: true) {
         name
         image {
           url

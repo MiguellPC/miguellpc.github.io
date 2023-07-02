@@ -1,0 +1,33 @@
+{
+  "Navbar": {
+    "about": "About",
+    "work": "Works",
+    "contact": "Contact"
+  },
+  "Hero": {
+    "greeting": "Hi, I'm"
+  },
+  "About": {
+    "introduction": "Introduction",
+    "overview": "Overview."
+  },
+  "Works": {
+    "myWork": "My work",
+    "projects": "Projects.",
+    "description": "Following projects showcases my skills and experience. Each project is briefly described with links to code repositores and live demos in it."
+  },
+  "Contact": {
+    "getInTouch": "Get in touch",
+    "contact": "Contact.",
+    "form": {
+      "name": "Your name",
+      "namePlaceholder": "What's your name?",
+      "email": "Your email",
+      "emailPlaceholder": "What's your email?",
+      "message": "Your message",
+      "messagePlaceholder": "What's your message?",
+      "sending": "Sending...",
+      "send": "Send"
+    }
+  }
+}

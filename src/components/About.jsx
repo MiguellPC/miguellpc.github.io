@@ -10,6 +10,7 @@ import { TbBrandGithub, TbBrandLinkedin } from 'react-icons/tb';
 
 const Tech = lazy(() => import('./Tech'));
 import { RichText } from './Rich-text';
+import { useTranslation } from 'react-i18next';
 
 const MOCK_CONTACTS = [
   {
@@ -26,6 +27,7 @@ const MOCK_CONTACTS = [
 
 const About = ({ aboutInfo }) => {
   const [presentation, setPresentation] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (aboutInfo?.presentation?.raw?.children) {
@@ -36,8 +38,12 @@ const About = ({ aboutInfo }) => {
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>Introduction</p>
-        <h2 className={styles.sectionHeadText}>Overview.</h2>
+        <p className={styles.sectionSubText}>
+          {t('About.introduction')}
+        </p>
+        <h2 className={styles.sectionHeadText}>
+          {t('About.overview')}
+        </h2>
       </motion.div>
 
       <motion.div

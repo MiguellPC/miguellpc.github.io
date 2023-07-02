@@ -9,6 +9,7 @@ import { fadeIn, textVariant } from '../utils/motion';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 import { FaGithub } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const ProjectCard = ({
   index,
@@ -90,30 +91,33 @@ const ProjectCard = ({
 
 const Works = ({ projectsInfo }) => {
   const [projects, setProjects] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
-    setProjects(projectsInfo);
+    if (projectsInfo) {
+      setProjects(projectsInfo);
+    }
   }, [projectsInfo]);
 
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>My work</p>
-        <h2 className={styles.sectionHeadText}>Projects.</h2>
+        <p className={styles.sectionSubText}>{t('Works.myWork')}</p>
+        <h2 className={styles.sectionHeadText}>
+          {t('Works.projects')}
+        </h2>
       </motion.div>
 
       <div className="w-full flex">
         <motion.p
           variants={fadeIn('', '', 0.1, 1)}
           className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]">
-          Following projects showcases my skills and experience. Each
-          project is briefly described with links to code repositores
-          and live demos in it.
+          {t('Works.description')}
         </motion.p>
       </div>
 
       <div className="mt-20 flex flex-wrap gap-7">
-        {projects?.map((project, index) => (
+        {projects.map((project, index) => (
           <div key={`project-${index}`}>
             <ProjectCard index={index} {...project} />
           </div>

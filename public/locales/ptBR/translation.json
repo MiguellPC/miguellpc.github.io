@@ -1,0 +1,33 @@
+{
+  "Navbar": {
+    "about": "Sobre",
+    "work": "Projetos",
+    "contact": "Contato"
+  },
+  "Hero": {
+    "greeting": "Olá, me chamo"
+  },
+  "About": {
+    "introduction": "Introdução",
+    "overview": "Sobre mim."
+  },
+  "Works": {
+    "myWork": "Meu Trabalho",
+    "projects": "Projetos.",
+    "description": "Os projetos a seguir demonstram minhas habilidades e experiências. Cada projeto é brevemente descrito com links para repositórios de código e demonstrações ao vivo."
+  },
+  "Contact": {
+    "getInTouch": "Entre em contato",
+    "contact": "Contato.",
+    "form": {
+      "name": "Seu nome",
+      "namePlaceholder": "Qual o seu nome?",
+      "email": "Seu email",
+      "emailPlaceholder": "Qual seu email?",
+      "message": "Sua mensagem",
+      "messagePlaceholder": "Qual sua mensagem?",
+      "sending": "Enviando...",
+      "send": "Enviar"
+    }
+  }
+}

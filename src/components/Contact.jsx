@@ -6,6 +6,7 @@ import { styles } from '../styles';
 const EarthCanvas = lazy(() => import('./canvas/Earth'));
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
+import { useTranslation } from 'react-i18next';
 
 const Contact = () => {
   const formRef = useRef();
@@ -15,6 +16,7 @@ const Contact = () => {
     message: '',
   });
   const [loading, setLoading] = useState(false);
+  const { t } = useTranslation();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -67,8 +69,12 @@ const Contact = () => {
       <motion.div
         variants={slideIn('left', 'tween', 0.2, 1)}
         className="flex-[0.75] bg-black-100 p-8 rounded-2xl">
-        <p className={styles.heroSubText}>Get in touch</p>
-        <h3 className={styles.heroHeadText}>Contact.</h3>
+        <p className={styles.heroSubText}>
+          {t('Contact.getInTouch')}
+        </p>
+        <h3 className={styles.heroHeadText}>
+          {t('Contact.contact')}
+        </h3>
 
         <form
           ref={formRef}
@@ -76,7 +82,7 @@ const Contact = () => {
           className="mt-12 flex  flex-col gap-8">
           <label className="flex flex-col">
             <span className="text-white font-medium mb-4">
-              Your name
+              {t('Contact.form.name')}
             </span>
             <input
               required
@@ -84,14 +90,14 @@ const Contact = () => {
               name="name"
               value={form.name}
               onChange={handleChange}
-              placeholder="What's your name?"
+              placeholder={t('Contact.form.namePlaceholder')}
               className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
             />
           </label>
 
           <label className="flex flex-col">
             <span className="text-white font-medium mb-4">
-              Your Email
+              {t('Contact.form.email')}
             </span>
             <input
               required
@@ -99,14 +105,14 @@ const Contact = () => {
               name="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="What's your email?"
+              placeholder={t('Contact.form.emailPlaceholder')}
               className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
             />
           </label>
 
           <label className="flex flex-col">
             <span className="text-white font-medium mb-4">
-              Your Message
+              {t('Contact.form.message')}
             </span>
             <textarea
               required
@@ -114,7 +120,7 @@ const Contact = () => {
               name="message"
               value={form.message}
               onChange={handleChange}
-              placeholder="What do you want to say?"
+              placeholder={t('Contact.form.messagePlaceholder')}
               className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
             />
           </label>
@@ -122,7 +128,9 @@ const Contact = () => {
           <button
             type="submit"
             className="bg-tertiary py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl">
-            {loading ? 'Sending...' : 'Send'}
+            {loading
+              ? t('Contact.form.sending')
+              : t('Contact.form.send')}
           </button>
         </form>
       </motion.div>
