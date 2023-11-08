@@ -1,4 +1,4 @@
-import { useEffect, useState, Suspense } from 'react';
+import { useEffect, useState, Suspense, lazy } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
 import { useQuery } from '@apollo/client';
@@ -6,16 +6,15 @@ import { fetchHygraphQuery } from './querys';
 
 import i18n from './i18n';
 
-import {
-  About,
-  Contact,
-  Hero,
-  Loader,
-  Navbar,
-  StarsCanvas,
-  Works,
-} from './components';
 import LocaleContext from './Context/LocaleContext';
+
+const About = lazy(() => import('./components/About'));
+const Contact = lazy(() => import('./components/Contact'));
+const Hero = lazy(() => import('./components/Hero'));
+const Loader = lazy(() => import('./components/Loader'));
+const Navbar = lazy(() => import('./components/Navbar'));
+const StarsCanvas = lazy(() => import('./components/canvas/Stars'));
+const Works = lazy(() => import('./components/Works'));
 
 const App = () => {
   const [heroInfo, setHeroInfo] = useState({});
