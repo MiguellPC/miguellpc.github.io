@@ -7,10 +7,23 @@ import { fadeIn, textVariant } from '../utils/motion';
 import { SectionWrapper } from '../hoc';
 
 import { TbBrandGithub, TbBrandLinkedin } from 'react-icons/tb';
+import { iCodeThis } from '../assets';
 
 const Tech = lazy(() => import('./Tech'));
 import { RichText } from './Rich-text';
 import { useTranslation } from 'react-i18next';
+
+const Logo_iCodeThis = () => {
+  return (
+    <>
+      <img
+        src={iCodeThis}
+        alt="iCodeThis logo"
+        className="h-9 w-9 p-1"
+      />
+    </>
+  );
+};
 
 const MOCK_CONTACTS = [
   {
@@ -22,6 +35,11 @@ const MOCK_CONTACTS = [
     name: 'LinkedIn',
     url: 'https://www.linkedin.com/in/miguel-caixeta/',
     icon: <TbBrandLinkedin />,
+  },
+  {
+    name: 'iCodeThis',
+    url: 'https://icodethis.com/MiguellPC',
+    icon: <Logo_iCodeThis />,
   },
 ];
 
